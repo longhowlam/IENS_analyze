@@ -47,17 +47,18 @@ nodes = data.frame(
 nodes = nodes %>% 
   mutate(
     color = case_when(
-      id %in%  c("{CHINEES}", "{JAPANS}", "{VIETNAMEES}", "{MALEISISCH}", "{WOKKEN}" , 
+      id %in%  c("{CHINEES}", "{JAPANS}", "{SUSHI}", "{VIETNAMEES}", "{MALEISISCH}", "{WOKKEN}" , 
                  "{THAIS}", "{INDONESISCH}", "{KANTONEES}", "{KOREAANS}") ~ "red",
-      stringr::str_detect (id , "FRANS") ~ "orange",
-      id %in%  c("{ITALIAANS}", "{PIZZERIA}", "{GRIEKS}", "{PORTUGEES}", "{SPAANS}", "{MEDITERRAAN") ~ "orange",
+      stringr::str_detect (id , "FRANS") ~ "yellow",
+      id %in%  c("{ITALIAANS}", "{PIZZERIA}", "{GRIEKS}", "{PORTUGEES}", "{SPAANS}", "{MEDITERRAAN}") ~ "orange",
       id %in%  c("{DUURZAAM}", "{BIOLOGISCH}") ~ "green",
       TRUE ~ "blue")
     ) %>% 
   mutate(
     group = case_when(
       color == "red" ~ "aziatisch",
-      color == "orange" ~ "frans/mediterraans",
+      color == "orange" ~ "mediterraans",
+      color == "yellow" ~ "frans",
       color == "green" ~ "BIOLOGISCH",
       color == "blue" ~ "overig",
       TRUE ~ "kkk"
